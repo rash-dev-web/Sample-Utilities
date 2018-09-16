@@ -1,0 +1,51 @@
+public WebElement enterUserName(String uname)
+	{
+		u.waitForElement(driver).until(ExpectedConditions.elementToBeClickable(username));
+		if(username!=null){
+			try
+			{
+				username.clear();
+				l.info(" Passed" + LoginPageObject.class.getName()+ " clear username text box ");
+				username.sendKeys(uname);
+				l.info(" Passed" + LoginPageObject.class.getName() + "," + uname + " enter in textbox ");
+			}
+			catch(NoSuchElementException e)
+			{
+				e.printStackTrace();
+				l.info(" Failed" + LoginPageObject.class.getName() + " unable to enter ");
+			}
+		}
+		return btnSubmit;
+	}
+	public WebElement enterPassword(String pass)
+	{
+		if(password!=null)
+		{
+			try
+			{
+				password.clear();
+				l.info(" Passed" + LoginPageObject.class.getName() + " clear pass text box ");
+				password.sendKeys(pass);
+				l.info(" Passed" + LoginPageObject.class.getName() + "," + pass + " enter in textbox ");
+			}
+			catch(NoSuchElementException e)
+			{
+				e.printStackTrace();
+				l.info(" Failed" + LoginPageObject.class.getName() + " unable to enter  ");
+			}
+		}
+		return btnSubmit;
+	}
+
+	public RemainedMeLaterPageObject click()
+	{
+		if(btnSubmit!=null)
+		{
+			btnSubmit.click();
+			l.info(" Passed" + LoginPageObject.class.getName() + " button clicked ");
+		}
+		return new RemainedMeLaterPageObject(driver);
+	}
+
+
+}
